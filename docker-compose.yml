@@ -3,10 +3,10 @@ services:
   localstack:
     image: localstack/localstack
     ports:
-      - "4566:4566"
-      - "4571:4571"
+      - "4566:4566"  # Main entry point for all services
+      - "4571:4571"  # Edge services
     environment:
-      - SERVICES=lambda,s3,ec2  # Add other services you need
+      - SERVICES=apigateway,cloudformation,cloudwatch,dynamodb,dynamodbstreams,ec2,es,events,firehose,iam,kinesis,kms,lambda,logs,redshift,resource-groups,route53,route53resolver,s3,secretsmanager,ses,sns,sqs,ssm,stepfunctions,sts  # Include all the free services
       - DEFAULT_REGION=us-east-1
       - DATA_DIR=/tmp/localstack/data
     volumes:
